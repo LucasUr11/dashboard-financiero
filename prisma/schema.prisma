@@ -1,0 +1,110 @@
+// FinHub — Esquema de datos
+// Base de datos: Turso (libSQL). Prisma usa provider "sqlite" porque libSQL
+// es compatible con SQLite; la conexión real se realiza en server/db.ts
+// mediante el driver adapter @prisma/adapter-libsql.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+enum TipoCuenta {
+  AHORRO
+  CORRIENTE
+  TARJETA
+  EFECTIVO
+}
+
+enum TipoTransaccion {
+  INGRESO
+  GASTO
+}
+
+enum PeriodoPresupuesto {
+  SEMANAL
+  MENSUAL
+  TRIMESTRAL
+  ANUAL
+}
+
+model Usuario {
+  id            String         @id @default(cuid())
+  email         String         @unique
+  nombre        String
+  cuentas       Cuenta[]
+  transacciones Transaccion[]
+  presupuestos  Presupuesto[]
+  creadoEn      DateTime       @default(now())
+  actualizadoEn DateTime       @updatedAt
+
+  @@map("usuarios")
+}
+
+model Cuenta {
+  id            String         @id @default(cuid())
+  nombre        String
+  tipo          TipoCuenta
+  saldo         Decimal        @default(0)
+  moneda        String         @default("USD")
+  usuario       Usuario        @relation(fields: [usuarioId], references: [id], onDelete: Cascade)
+  usuarioId     String
+  transacciones Transaccion[]
+  creadoEn      DateTime       @default(now())
+
+  @@index([usuarioId])
+  @@map("cuentas")
+}
+
+model Categoria {
+  id            String           @id @default(cuid())
+  nombre        String
+  color         String           @default("#6366f1")
+  tipo          TipoTransaccion
+  transacciones Transaccion[]
+  presupuestos  Presupuesto[]
+  creadoEn      DateTime         @default(now())
+
+  @@index([tipo])
+  @@map("categorias")
+}
+
+model Transaccion {
+  id          String          @id @default(cuid())
+  descripcion String
+  monto       Decimal
+  tipo        TipoTransaccion
+  fecha       DateTime
+  categoria   Categoria?      @relation(fields: [categoriaId], references: [id], onDelete: SetNull)
+  categoriaId String?
+  cuenta      Cuenta          @relation(fields: [cuentaId], references: [id], onDelete: Cascade)
+  cuentaId    String
+  usuario     Usuario         @relation(fields: [usuarioId], references: [id], onDelete: Cascade)
+  usuarioId   String
+  creadoEn    DateTime        @default(now())
+
+  @@index([usuarioId, fecha])
+  @@index([categoriaId])
+  @@index([cuentaId])
+  @@map("transacciones")
+}
+
+model Presupuesto {
+  id          String             @id @default(cuid())
+  limite      Decimal
+  periodo     PeriodoPresupuesto @default(MENSUAL)
+  mes         Int
+  anio        Int
+  categoria   Categoria          @relation(fields: [categoriaId], references: [id], onDelete: Cascade)
+  categoriaId String
+  usuario     Usuario            @relation(fields: [usuarioId], references: [id], onDelete: Cascade)
+  usuarioId   String
+  creadoEn    DateTime           @default(now())
+
+  @@unique([usuarioId, categoriaId, mes, anio])
+  @@index([usuarioId, anio, mes])
+  @@map("presupuestos")
+}

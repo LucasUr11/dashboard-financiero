@@ -1,0 +1,23 @@
+# Dependencias y build
+node_modules
+dist
+dist-ssr
+*.local
+
+# Entorno (nunca commitear credenciales)
+.env
+.env.*
+!.env.example
+
+# Prisma / SQLite
+.prisma
+*.db
+*.db-journal
+
+# Cobertura y editor
+coverage
+.vscode/*
+!.vscode/settings.json
+.idea
+.DS_Store
+*.log
