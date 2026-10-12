@@ -326,6 +326,32 @@ La marca del sidebar usa `public/logo.png`, con proporción preservada mediante
 
 ---
 
+## 🔐 Autenticación (simulada)
+
+Flujo de autenticación front-end (MVP, sin backend de auth real):
+
+- **Contexto global:** `AuthProvider` (`src/context/AuthContext.tsx`)
+  expone `useAuth()` con `isAuthenticated`, `usuario`,
+  `iniciarSesion()`, `registrarse()` y `cerrarSesion()`.
+- **Persistencia:** el perfil del usuario se guarda en `localStorage`
+  (clave `fhub:auth`) — **la contraseña nunca se persiste**.
+  La sesión sobrevive a las recargas.
+- **Modal de login/registro** (`src/components/auth/AuthModal.tsx`):
+  campos de Email, Contraseña (y Nombre en registro), validaciones
+  básicas (formato de email, contraseña mínima de 6 caracteres,
+  nombre de 2+), estados de error por campo, spinner de carga
+  simulado (~700 ms), cierre con `Escape` o clic en el backdrop.
+- **Header:** en la esquina superior derecha se muestran
+  **Iniciar Sesión** + avatar por defecto cuando no hay sesión;
+  al autenticarse cambian por el **nombre del usuario** (con
+  avatar de iniciales) y el botón **Cerrar Sesión**.
+
+> **Nota:** es una simulación de demostración — cualquier credencial
+> con formato válido "inicia sesión". El roadmap incluye auth real
+> (JWT/session) contra la API.
+
+---
+
 ## 🗺️ Roadmap
 
 - [ ] Autenticación real (JWT/session) para reemplazar `CURRENT_USER_ID`

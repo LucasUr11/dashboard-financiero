@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { Outlet } from 'react-router-dom'
 import { Sidebar } from './Sidebar'
 import { Header } from './Header'
+import { AuthModal } from '../auth/AuthModal'
 import { cn } from '../../lib/utils'
 
 const SIDEBAR_STORAGE_KEY = 'fhub:sidebar'
@@ -21,6 +22,7 @@ export function Layout() {
     if (guardado !== null) return guardado === 'open'
     return window.innerWidth >= 1024
   })
+  const [authAbierto, setAuthAbierto] = useState(false)
 
   useEffect(() => {
     localStorage.setItem(SIDEBAR_STORAGE_KEY, sidebarOpen ? 'open' : 'closed')
@@ -43,13 +45,19 @@ export function Layout() {
       />
 
       <div className="flex min-w-0 flex-1 flex-col">
-        <Header onToggleSidebar={toggleSidebar} />
+        <Header
+          onToggleSidebar={toggleSidebar}
+          onAbrirAuth={() => setAuthAbierto(true)}
+        />
         <main className="min-w-0 flex-1 overflow-y-auto">
           <div className="mx-auto max-w-7xl p-4 sm:p-6 lg:p-8">
             <Outlet />
           </div>
         </main>
       </div>
+
+      {/* Modal de login / registro */}
+      <AuthModal abierto={authAbierto} onClose={() => setAuthAbierto(false)} />
     </div>
   )
 }
