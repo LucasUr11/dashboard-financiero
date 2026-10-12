@@ -170,7 +170,7 @@ export function TransaccionesPage() {
       {/* Tabla */}
       <Card className="min-w-0">
         <div className="overflow-x-auto">
-          <table className="w-full min-w-[720px] text-sm">
+          <table className="w-full min-w-180 text-sm">
             <thead>
               <tr className="border-b border-slate-100 text-left text-xs uppercase tracking-wide text-slate-500 dark:border-slate-800 dark:text-slate-400">
                 <th className="px-6 py-3 font-medium">Fecha</th>
@@ -328,7 +328,7 @@ export function TransaccionesPage() {
                     htmlFor="txn-monto"
                     className="mb-1.5 block text-xs font-semibold text-slate-600 dark:text-slate-300"
                   >
-                    Monto (USD)
+                    Monto (ARS)
                   </label>
                   <input
                     id="txn-monto"

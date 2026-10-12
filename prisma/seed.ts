@@ -38,13 +38,13 @@ async function main() {
 
   const cuentas = await Promise.all([
     prisma.cuenta.create({
-      data: { nombre: 'Cuenta Corriente', tipo: TipoCuenta.CORRIENTE, saldo: '24500.00', moneda: 'USD', usuarioId: usuario.id },
+      data: { nombre: 'Cuenta Corriente', tipo: TipoCuenta.CORRIENTE, saldo: '24500.00', moneda: 'ARS', usuarioId: usuario.id },
     }),
     prisma.cuenta.create({
-      data: { nombre: 'Caja de Ahorro', tipo: TipoCuenta.AHORRO, saldo: '82000.00', moneda: 'USD', usuarioId: usuario.id },
+      data: { nombre: 'Caja de Ahorro', tipo: TipoCuenta.AHORRO, saldo: '82000.00', moneda: 'ARS', usuarioId: usuario.id },
     }),
     prisma.cuenta.create({
-      data: { nombre: 'Tarjeta de Crédito', tipo: TipoCuenta.TARJETA, saldo: '-12500.00', moneda: 'USD', usuarioId: usuario.id },
+      data: { nombre: 'Tarjeta de Crédito', tipo: TipoCuenta.TARJETA, saldo: '-12500.00', moneda: 'ARS', usuarioId: usuario.id },
     }),
   ])
 

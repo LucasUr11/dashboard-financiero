@@ -102,7 +102,7 @@ export function DashboardPage() {
         </CardHeader>
         <CardContent className="px-0 pb-0 sm:px-0">
           <div className="overflow-x-auto">
-            <table className="w-full min-w-[680px] text-sm">
+            <table className="w-full min-w-170 text-sm">
               <thead>
                 <tr className="border-b border-slate-100 text-left text-xs uppercase tracking-wide text-slate-500 dark:border-slate-800 dark:text-slate-400">
                   <th className="px-6 py-3 font-medium">Categoría</th>

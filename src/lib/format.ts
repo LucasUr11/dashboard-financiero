@@ -2,7 +2,7 @@ const LOCALE = 'es-AR'
 
 export function formatCurrency(
   value: number,
-  currency = 'USD',
+  currency = 'ARS',
   locale = LOCALE,
 ): string {
   return new Intl.NumberFormat(locale, {
@@ -13,7 +13,7 @@ export function formatCurrency(
   }).format(value)
 }
 
-export function formatCompactCurrency(value: number, currency = 'USD'): string {
+export function formatCompactCurrency(value: number, currency = 'ARS'): string {
   return new Intl.NumberFormat(LOCALE, {
     style: 'currency',
     currency,

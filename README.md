@@ -44,6 +44,8 @@ dashboard-financiero/
 ├── prisma/
 │   ├── schema.prisma        # Esquema: Usuario, Cuenta, Categoria, Transaccion, Presupuesto
 │   └── seed.ts              # Datos de demostración (6 meses de historia)
+├── public/
+│   └── logo.png             # Logo de FinHub usado en el sidebar
 ├── server/
 │   ├── index.ts             # Entrypoint Hono (puerto 3001)
 │   ├── db.ts                # Prisma Client con adaptador libSQL (Turso)
@@ -210,6 +212,9 @@ El sidebar se oculta/muestra con un botón (dentro del sidebar y en el header)
 Secciones de la app: **Resumen** (`/`), **Dashboard General** (`/dashboard`),
 **Transacciones** (`/transacciones`), **Presupuestos** (`/presupuestos`).
 
+La marca del sidebar usa `public/logo.png`, con proporción preservada mediante
+`object-contain`; su ancho se adapta al sidebar expandido o colapsado.
+
 ---
 
 ## 📝 Registro de cambios
@@ -276,6 +281,14 @@ Secciones de la app: **Resumen** (`/`), **Dashboard General** (`/dashboard`),
   `vendor` (React) y `recharts` en el bundle — build final sin warnings
 - **Verificación:** `npm run build` ✅, `npm run typecheck:server` ✅,
   API levantada en runtime con `/api/health` respondiendo 200
+
+### v0.1.2 — Moneda y marca
+
+- **Moneda:** se cambió la moneda predeterminada de la aplicación de USD a ARS
+  en los formatos, las cuentas de demostración y el esquema/seed de Prisma.
+  Los importes numéricos existentes se conservaron.
+- **Logo:** se agregó `public/logo.png` y se reemplazó el ícono de marca de la
+  cabecera del sidebar por la imagen, manteniendo sus proporciones con Tailwind.
 
 ---
 

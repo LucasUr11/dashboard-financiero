@@ -7,7 +7,6 @@ import {
   Wallet,
   PanelLeftClose,
   PanelLeftOpen,
-  PiggyBank,
 } from 'lucide-react'
 import { cn } from '../../lib/utils'
 
@@ -55,9 +54,11 @@ export function Sidebar({ isOpen, onToggle }: SidebarProps) {
     >
       {/* Cabecera: marca + botón colapsar */}
       <div className="flex h-16 shrink-0 items-center gap-3 border-b border-white/10 px-4">
-        <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-indigo-500 to-violet-600">
-          <PiggyBank className="h-5 w-5 text-white" />
-        </div>
+        <img
+          src="/logo.png"
+          alt="FinHub"
+          className={cn('h-9 shrink-0 object-contain', isOpen ? 'w-16' : 'w-9')}
+        />
         <span
           className={cn(
             'overflow-hidden whitespace-nowrap text-lg font-bold tracking-tight transition-[width,opacity] duration-200',
@@ -118,7 +119,7 @@ export function Sidebar({ isOpen, onToggle }: SidebarProps) {
       {/* Pie: usuario */}
       <div className="shrink-0 border-t border-white/10 p-4">
         <div className="flex items-center gap-3">
-          <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-emerald-400 to-teal-600 text-sm font-bold text-white">
+          <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-linear-to-br from-emerald-400 to-teal-600 text-sm font-bold text-white">
             AD
           </div>
           <div

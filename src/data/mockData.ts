@@ -17,9 +17,9 @@ import { monthKey } from '../lib/format'
 // ──────────────────────────────────────────────────────────
 
 export const CUENTAS: Account[] = [
-  { id: 'acc-corriente', nombre: 'Cuenta Corriente', tipo: 'CORRIENTE', saldo: 24500, moneda: 'USD' },
-  { id: 'acc-ahorro', nombre: 'Caja de Ahorro', tipo: 'AHORRO', saldo: 82000, moneda: 'USD' },
-  { id: 'acc-tarjeta', nombre: 'Tarjeta de Crédito', tipo: 'TARJETA', saldo: -12500, moneda: 'USD' },
+  { id: 'acc-corriente', nombre: 'Cuenta Corriente', tipo: 'CORRIENTE', saldo: 24500, moneda: 'ARS' },
+  { id: 'acc-ahorro', nombre: 'Caja de Ahorro', tipo: 'AHORRO', saldo: 82000, moneda: 'ARS' },
+  { id: 'acc-tarjeta', nombre: 'Tarjeta de Crédito', tipo: 'TARJETA', saldo: -12500, moneda: 'ARS' },
 ]
 
 export const CATEGORIAS: Category[] = [

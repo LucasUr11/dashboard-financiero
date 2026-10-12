@@ -49,7 +49,7 @@ model Cuenta {
   nombre        String
   tipo          TipoCuenta
   saldo         Decimal        @default(0)
-  moneda        String         @default("USD")
+  moneda        String         @default("ARS")
   usuario       Usuario        @relation(fields: [usuarioId], references: [id], onDelete: Cascade)
   usuarioId     String
   transacciones Transaccion[]
