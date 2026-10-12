@@ -7,8 +7,11 @@ import {
   Wallet,
   PanelLeftClose,
   PanelLeftOpen,
+  Sun,
+  Moon,
 } from 'lucide-react'
 import { cn } from '../../lib/utils'
+import { useTheme } from '../../hooks/useTheme'
 
 interface NavItem {
   to: string
@@ -40,6 +43,8 @@ interface SidebarProps {
  * layout nunca se rompe al abrir/cerrar.
  */
 export function Sidebar({ isOpen, onToggle }: SidebarProps) {
+  const { isDark, toggleTheme } = useTheme()
+
   return (
     <aside
       className={cn(
@@ -115,6 +120,35 @@ export function Sidebar({ isOpen, onToggle }: SidebarProps) {
           </NavLink>
         ))}
       </nav>
+
+      {/* Botón de cambio de tema (base del sidebar) */}
+      <div className="shrink-0 px-3 py-3">
+        <button
+          type="button"
+          onClick={toggleTheme}
+          title={isDark ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro'}
+          aria-label={isDark ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro'}
+          aria-pressed={isDark}
+          className={cn(
+            'flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-slate-400 transition-colors hover:bg-white/5 hover:text-white',
+            !isOpen && 'justify-center lg:px-0',
+          )}
+        >
+          {isDark ? (
+            <Sun className="h-5 w-5 shrink-0" />
+          ) : (
+            <Moon className="h-5 w-5 shrink-0" />
+          )}
+          <span
+            className={cn(
+              'overflow-hidden whitespace-nowrap transition-[width,opacity] duration-200',
+              isOpen ? 'w-auto opacity-100' : 'w-0 opacity-0',
+            )}
+          >
+            {isDark ? 'Modo claro' : 'Modo oscuro'}
+          </span>
+        </button>
+      </div>
 
       {/* Pie: usuario */}
       <div className="shrink-0 border-t border-white/10 p-4">

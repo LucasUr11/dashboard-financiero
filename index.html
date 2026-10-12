@@ -5,6 +5,20 @@
     <link rel="icon" type="image/svg+xml" href="public/logo-financiero.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="FinHub — Dashboard financiero moderno: resumen, transacciones y presupuestos." />
+    <script>
+      /* Aplica el tema guardado ANTES del primer paint (evita el flash). */
+      (function () {
+        try {
+          var guardado = localStorage.getItem('fhub:theme')
+          var oscuro =
+            guardado === 'dark' ||
+            (!guardado && window.matchMedia('(prefers-color-scheme: dark)').matches)
+          if (oscuro) {
+            document.documentElement.classList.add('dark')
+          }
+        } catch (error) {}
+      })()
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link

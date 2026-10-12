@@ -212,6 +212,25 @@ El sidebar se oculta/muestra con un botón (dentro del sidebar y en el header)
 Secciones de la app: **Resumen** (`/`), **Dashboard General** (`/dashboard`),
 **Transacciones** (`/transacciones`), **Presupuestos** (`/presupuestos`).
 
+---
+
+## 🌗 Tema (Dark / Light Mode)
+
+El botón de cambio de tema está en la **parte inferior del sidebar** (encima
+de la tarjeta de usuario), con íconos **Sol / Luna** que cambian según el
+estado actual.
+
+- **Estrategia:** clase `dark` en `<html>` + el variant `@custom-variant dark`
+  de Tailwind (ver `src/index.css`). Toda la UI ya usa el prefijo `dark:`.
+- **Persistencia:** la preferencia se guarda en `localStorage` bajo la clave
+  `fhub:theme` y sobrevive a recargas.
+- **Sin flash:** un script inline en `index.html` aplica el tema guardado
+  **antes del primer paint**.
+- **Respeto al sistema:** si el usuario nunca eligió manualmente, sigue la
+  preferencia del sistema (`prefers-color-scheme`) en tiempo real.
+- **Hook:** `useTheme()` (`src/hooks/useTheme.ts`) expone
+  `{ theme, isDark, toggleTheme }`.
+
 La marca del sidebar usa `public/logo.png`, con proporción preservada mediante
 `object-contain`; su ancho se adapta al sidebar expandido o colapsado.
 
@@ -289,6 +308,21 @@ La marca del sidebar usa `public/logo.png`, con proporción preservada mediante
   Los importes numéricos existentes se conservaron.
 - **Logo:** se agregó `public/logo.png` y se reemplazó el ícono de marca de la
   cabecera del sidebar por la imagen, manteniendo sus proporciones con Tailwind.
+
+### v0.2.0 — Botón de cambio de tema (Dark / Light Mode)
+
+- **Hook `useTheme`** (`src/hooks/useTheme.ts`): administra el tema, aplica la
+  clase `dark` en `<html>`, persiste la preferencia en `localStorage`
+  (clave `fhub:theme`) y sigue al sistema (`prefers-color-scheme`) cuando
+  el usuario no eligió manualmente
+- **Botón en la base del sidebar** (`src/components/layout/Sidebar.tsx`):
+  íconos Sol/Luna que cambien según el estado, con el mismo patrón de
+  colapso que los ítems de navegación (solo ícono con el sidebar cerrado)
+  y atributos de accesibilidad (`aria-pressed`, `aria-label`)
+- **Script anti-flash** en `index.html`: aplica el tema guardado antes del
+  primer paint para evitar el destello de modo claro
+- **Documentación:** nueva sección "🌗 Tema (Dark / Light Mode)" en este README
+- **Verificación:** `npm run build` ✅ (2226 módulos, sin warnings)
 
 ---
 
