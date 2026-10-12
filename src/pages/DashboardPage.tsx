@@ -101,7 +101,7 @@ export function DashboardPage() {
           </CardDescription>
         </CardHeader>
         <CardContent className="px-0 pb-0 sm:px-0">
-          <div className="overflow-x-auto">
+          <div className="touch-pan-x overflow-x-auto overscroll-x-contain">
             <table className="w-full min-w-170 text-sm">
               <thead>
                 <tr className="border-b border-slate-100 text-left text-xs uppercase tracking-wide text-slate-500 dark:border-slate-800 dark:text-slate-400">

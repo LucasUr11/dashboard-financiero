@@ -31,7 +31,7 @@ export function Layout() {
   const toggleSidebar = () => setSidebarOpen((previo) => !previo)
 
   return (
-    <div className="flex h-screen w-full overflow-hidden">
+    <div className="flex h-dvh w-full overflow-hidden">
       <Sidebar isOpen={sidebarOpen} onToggle={toggleSidebar} />
 
       {/* Backdrop para móvil */}
@@ -49,8 +49,8 @@ export function Layout() {
           onToggleSidebar={toggleSidebar}
           onAbrirAuth={() => setAuthAbierto(true)}
         />
-        <main className="min-w-0 flex-1 overflow-y-auto">
-          <div className="mx-auto max-w-7xl p-4 sm:p-6 lg:p-8">
+        <main className="min-h-0 min-w-0 flex-1 overflow-y-auto">
+          <div className="mx-auto max-w-7xl px-4 py-4 sm:px-6 sm:py-6 lg:py-8">
             <Outlet />
           </div>
         </main>

@@ -13,6 +13,7 @@ Dashboard financiero moderno construido con **React + TypeScript + Vite + Tailwi
 - [Comandos](#-comandos)
 - [Arquitectura](#-arquitectura)
 - [UI: el sidebar colapsable](#-ui-el-sidebar-colapsable)
+- [Diseño responsive (Mobile First)](#-diseño-responsive-mobile-first)
 - [Registro de cambios](#-registro-de-cambios)
 - [Roadmap](#-roadmap)
 
@@ -214,6 +215,26 @@ El sidebar se oculta/muestra con un botón (dentro del sidebar y en el header)
 
 Secciones de la app: **Resumen** (`/`), **Dashboard General** (`/dashboard`),
 **Transacciones** (`/transacciones`), **Presupuestos** (`/presupuestos`).
+
+---
+
+## 📱 Diseño responsive (Mobile First)
+
+- **Espaciado de páginas:** el contenido usa `px-4 sm:px-6` y aumenta el espacio
+  vertical en pantallas grandes, manteniendo el ancho máximo del dashboard.
+- **Tablas:** transacciones recientes, transacciones y resumen por categoría
+  conservan su estructura tabular dentro de contenedores con desplazamiento
+  horizontal táctil (`overflow-x-auto`, `touch-pan-x`), sin ensanchar la página.
+- **Gráficos:** todos los gráficos usan `ResponsiveContainer`; los gráficos
+  cartesianos ajustan su altura de `h-64` en móvil a `sm:h-80`, y la leyenda del
+  gráfico de barras permanece dentro de su área visible.
+- **Controles táctiles:** los botones de header, sidebar, filtros, paginación y
+  modales tienen objetivos de al menos 44 px; los enlaces del sidebar mantienen
+  esa altura mínima.
+- **Pantallas pequeñas:** el shell usa la altura dinámica del viewport, el área
+  principal conserva su propio scroll vertical y los formularios de transacción
+  pasan a una sola columna en móviles. Los modales pueden desplazarse si su
+  contenido supera la altura disponible.
 
 ---
 

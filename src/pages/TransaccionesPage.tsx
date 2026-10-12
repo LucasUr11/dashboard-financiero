@@ -127,7 +127,7 @@ export function TransaccionesPage() {
                     setPagina(1)
                   }}
                   className={cn(
-                    'cursor-pointer rounded-md px-3 py-1.5 text-sm font-medium transition-colors',
+                    'min-h-11 min-w-11 cursor-pointer rounded-md px-3 py-2 text-sm font-medium transition-colors',
                     filtroTipo === opcion.valor
                       ? 'bg-indigo-600 text-white shadow-sm'
                       : 'text-slate-600 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800',
@@ -145,7 +145,7 @@ export function TransaccionesPage() {
                 setPagina(1)
               }}
               aria-label="Filtrar por categoría"
-              className="rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm focus:border-indigo-400 focus:outline-none focus:ring-2 focus:ring-indigo-200 dark:border-slate-700 dark:bg-slate-800"
+              className="min-h-11 min-w-0 max-w-full flex-1 rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm focus:border-indigo-400 focus:outline-none focus:ring-2 focus:ring-indigo-200 dark:border-slate-700 dark:bg-slate-800 sm:flex-none"
             >
               <option value="todas">Todas las categorías</option>
               {categoriasGasto.map((categoria) => (
@@ -158,7 +158,7 @@ export function TransaccionesPage() {
             <button
               type="button"
               onClick={() => setModalAbierto(true)}
-              className="inline-flex cursor-pointer items-center gap-2 rounded-lg bg-indigo-600 px-4 py-2 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-indigo-700"
+              className="inline-flex min-h-11 cursor-pointer items-center justify-center gap-2 rounded-lg bg-indigo-600 px-4 py-2 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-indigo-700"
             >
               <Plus className="h-4 w-4" />
               Nueva transacción
@@ -169,7 +169,7 @@ export function TransaccionesPage() {
 
       {/* Tabla */}
       <Card className="min-w-0">
-        <div className="overflow-x-auto">
+        <div className="touch-pan-x overflow-x-auto overscroll-x-contain">
           <table className="w-full min-w-180 text-sm">
             <thead>
               <tr className="border-b border-slate-100 text-left text-xs uppercase tracking-wide text-slate-500 dark:border-slate-800 dark:text-slate-400">
@@ -235,7 +235,7 @@ export function TransaccionesPage() {
         </div>
 
         {/* Paginación */}
-        <div className="flex items-center justify-between border-t border-slate-100 px-6 py-3 dark:border-slate-800">
+        <div className="flex items-center justify-between gap-3 border-t border-slate-100 px-3 py-3 dark:border-slate-800 sm:px-6">
           <p className="text-xs text-slate-500 dark:text-slate-400">
             Mostrando{' '}
             <strong className="font-semibold text-slate-700 dark:text-slate-200">
@@ -253,7 +253,7 @@ export function TransaccionesPage() {
               onClick={() => setPagina((p) => Math.max(1, p - 1))}
               disabled={paginaActual <= 1}
               aria-label="Página anterior"
-              className="cursor-pointer rounded-lg p-2 text-slate-500 transition-colors hover:bg-slate-100 disabled:opacity-40 dark:text-slate-400 dark:hover:bg-slate-800"
+              className="min-h-11 min-w-11 cursor-pointer rounded-lg p-2 text-slate-500 transition-colors hover:bg-slate-100 disabled:opacity-40 dark:text-slate-400 dark:hover:bg-slate-800"
             >
               <ChevronLeft className="h-4 w-4" />
             </button>
@@ -265,7 +265,7 @@ export function TransaccionesPage() {
               onClick={() => setPagina((p) => Math.min(totalPaginas, p + 1))}
               disabled={paginaActual >= totalPaginas}
               aria-label="Página siguiente"
-              className="cursor-pointer rounded-lg p-2 text-slate-500 transition-colors hover:bg-slate-100 disabled:opacity-40 dark:text-slate-400 dark:hover:bg-slate-800"
+              className="min-h-11 min-w-11 cursor-pointer rounded-lg p-2 text-slate-500 transition-colors hover:bg-slate-100 disabled:opacity-40 dark:text-slate-400 dark:hover:bg-slate-800"
             >
               <ChevronRight className="h-4 w-4" />
             </button>
@@ -283,7 +283,7 @@ export function TransaccionesPage() {
           aria-label="Nueva transacción"
         >
           <Card
-            className="w-full max-w-md"
+            className="my-auto max-h-[calc(100dvh-2rem)] w-full max-w-md overflow-y-auto"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex items-center justify-between border-b border-slate-100 px-6 py-4 dark:border-slate-800">
@@ -294,7 +294,7 @@ export function TransaccionesPage() {
                 type="button"
                 onClick={() => setModalAbierto(false)}
                 aria-label="Cerrar"
-                className="cursor-pointer rounded-lg p-1.5 text-slate-400 transition-colors hover:bg-slate-100 hover:text-slate-600 dark:hover:bg-slate-800"
+                className="min-h-11 min-w-11 cursor-pointer rounded-lg p-1.5 text-slate-400 transition-colors hover:bg-slate-100 hover:text-slate-600 dark:hover:bg-slate-800"
               >
                 <X className="h-5 w-5" />
               </button>
@@ -322,7 +322,7 @@ export function TransaccionesPage() {
                 />
               </div>
 
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                 <div>
                   <label
                     htmlFor="txn-monto"
@@ -364,7 +364,7 @@ export function TransaccionesPage() {
                 </div>
               </div>
 
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                 <div>
                   <label
                     htmlFor="txn-tipo"
@@ -443,13 +443,13 @@ export function TransaccionesPage() {
                 <button
                   type="button"
                   onClick={() => setModalAbierto(false)}
-                  className="cursor-pointer rounded-lg px-4 py-2 text-sm font-semibold text-slate-600 transition-colors hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800"
+                  className="min-h-11 cursor-pointer rounded-lg px-4 py-2 text-sm font-semibold text-slate-600 transition-colors hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800"
                 >
                   Cancelar
                 </button>
                 <button
                   type="submit"
-                  className="cursor-pointer rounded-lg bg-indigo-600 px-4 py-2 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-indigo-700"
+                  className="min-h-11 cursor-pointer rounded-lg bg-indigo-600 px-4 py-2 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-indigo-700"
                 >
                   Guardar
                 </button>

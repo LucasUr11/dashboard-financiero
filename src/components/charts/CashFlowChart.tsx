@@ -22,8 +22,8 @@ interface CashFlowChartProps {
  */
 export function CashFlowChart({ data, className }: CashFlowChartProps) {
   return (
-    <div className={className}>
-      <ResponsiveContainer width="100%" height={320}>
+    <div className={`h-64 min-w-0 sm:h-80 ${className ?? ''}`}>
+      <ResponsiveContainer width="100%" height="100%">
         <AreaChart data={data} margin={{ top: 8, right: 8, left: 0, bottom: 0 }}>
           <defs>
             <linearGradient id="gradIngresos" x1="0" y1="0" x2="0" y2="1">

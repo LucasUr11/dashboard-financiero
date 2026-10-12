@@ -35,7 +35,7 @@ export function Header({ onToggleSidebar, onAbrirAuth }: HeaderProps) {
         onClick={onToggleSidebar}
         title="Mostrar / ocultar sidebar"
         aria-label="Mostrar / ocultar sidebar"
-        className="cursor-pointer rounded-lg p-2 text-slate-500 transition-colors hover:bg-slate-100 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-white"
+        className="min-h-11 min-w-11 cursor-pointer rounded-lg p-2 text-slate-500 transition-colors hover:bg-slate-100 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-white"
       >
         <PanelLeft className="h-5 w-5" />
       </button>
@@ -68,7 +68,7 @@ export function Header({ onToggleSidebar, onAbrirAuth }: HeaderProps) {
               onClick={cerrarSesion}
               title="Cerrar sesión"
               aria-label="Cerrar sesión"
-              className="inline-flex cursor-pointer items-center gap-1.5 rounded-lg px-2.5 py-2 text-sm font-medium text-slate-600 transition-colors hover:bg-slate-100 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-white"
+              className="inline-flex min-h-11 min-w-11 cursor-pointer items-center justify-center gap-1.5 rounded-lg px-2.5 py-2 text-sm font-medium text-slate-600 transition-colors hover:bg-slate-100 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-white"
             >
               <LogOut className="h-4 w-4" />
               <span className="hidden sm:inline">Cerrar Sesión</span>
@@ -79,7 +79,7 @@ export function Header({ onToggleSidebar, onAbrirAuth }: HeaderProps) {
             <button
               type="button"
               onClick={onAbrirAuth}
-              className="inline-flex cursor-pointer items-center gap-2 rounded-lg bg-indigo-600 px-3.5 py-2 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-indigo-700"
+              className="inline-flex min-h-11 cursor-pointer items-center gap-2 rounded-lg bg-indigo-600 px-3.5 py-2 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-indigo-700"
             >
               Iniciar Sesión
             </button>

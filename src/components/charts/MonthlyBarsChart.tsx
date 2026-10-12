@@ -22,8 +22,8 @@ interface MonthlyBarsChartProps {
  */
 export function MonthlyBarsChart({ data, className }: MonthlyBarsChartProps) {
   return (
-    <div className={className}>
-      <ResponsiveContainer width="100%" height={320}>
+    <div className={`h-64 min-w-0 sm:h-80 ${className ?? ''}`}>
+      <ResponsiveContainer width="100%" height="100%">
         <BarChart data={data} margin={{ top: 8, right: 8, left: 0, bottom: 0 }} barGap={4}>
           <CartesianGrid
             strokeDasharray="3 3"

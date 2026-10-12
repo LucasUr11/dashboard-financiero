@@ -121,7 +121,7 @@ export function AuthModal({ abierto, onClose }: AuthModalProps) {
       aria-label={modo === 'login' ? 'Iniciar sesión' : 'Registrarse'}
     >
       <div
-        className="w-full max-w-md"
+        className="my-auto max-h-[calc(100dvh-2rem)] w-full max-w-md overflow-y-auto"
         onClick={(event) => event.stopPropagation()}
       >
         <Card>
@@ -134,7 +134,7 @@ export function AuthModal({ abierto, onClose }: AuthModalProps) {
               type="button"
               onClick={onClose}
               aria-label="Cerrar"
-              className="cursor-pointer rounded-lg p-1.5 text-slate-400 transition-colors hover:bg-slate-100 hover:text-slate-600 dark:hover:bg-slate-800"
+              className="min-h-11 min-w-11 cursor-pointer rounded-lg p-1.5 text-slate-400 transition-colors hover:bg-slate-100 hover:text-slate-600 dark:hover:bg-slate-800"
             >
               <X className="h-5 w-5" />
             </button>
@@ -256,7 +256,7 @@ export function AuthModal({ abierto, onClose }: AuthModalProps) {
             <button
               type="submit"
               disabled={cargando}
-              className="inline-flex w-full cursor-pointer items-center justify-center gap-2 rounded-lg bg-indigo-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-indigo-700 disabled:cursor-not-allowed disabled:opacity-60"
+              className="inline-flex min-h-11 w-full cursor-pointer items-center justify-center gap-2 rounded-lg bg-indigo-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-indigo-700 disabled:cursor-not-allowed disabled:opacity-60"
             >
               {cargando && <Loader2 className="h-4 w-4 animate-spin" />}
               {modo === 'login' ? 'Iniciar sesión' : 'Crear cuenta'}
@@ -274,7 +274,7 @@ export function AuthModal({ abierto, onClose }: AuthModalProps) {
                   setErrores({})
                   setErrorGeneral(null)
                 }}
-                className="cursor-pointer font-semibold text-indigo-600 transition-colors hover:text-indigo-700 dark:text-indigo-400 dark:hover:text-indigo-300"
+                className="min-h-11 min-w-11 cursor-pointer font-semibold text-indigo-600 transition-colors hover:text-indigo-700 dark:text-indigo-400 dark:hover:text-indigo-300"
               >
                 {modo === 'login' ? 'Registrate' : 'Iniciá sesión'}
               </button>
