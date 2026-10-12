@@ -57,10 +57,12 @@ dashboard-financiero/
 │       └── categorias.ts    # Listado de categorías
 ├── src/
 │   ├── components/
+│   │   ├── auth/            # AuthModal (login/registro)
 │   │   ├── layout/          # Sidebar, Header, Layout (shell)
 │   │   ├── ui/              # Card, Badge, ProgressBar, StatCard
 │   │   └── charts/          # CashFlow, Bars, Line, Donut, ChartTooltip
-│   ├── hooks/               # useCountUp (animación de KPIs)
+│   ├── context/             # AuthContext (estado global de autenticación)
+│   ├── hooks/               # useCountUp (KPIs), useTheme (tema)
 │   ├── lib/                 # format, utils (cn), api (cliente HTTP tipado)
 │   ├── data/mockData.ts     # Datos demo consistentes (MVP)
 │   ├── pages/               # Resumen, Dashboard, Transacciones, Presupuestos
@@ -323,6 +325,28 @@ La marca del sidebar usa `public/logo.png`, con proporción preservada mediante
   primer paint para evitar el destello de modo claro
 - **Documentación:** nueva sección "🌗 Tema (Dark / Light Mode)" en este README
 - **Verificación:** `npm run build` ✅ (2226 módulos, sin warnings)
+
+### v0.3.0 — Flujo de autenticación en la interfaz
+
+- **Contexto de autenticación** (`src/context/AuthContext.tsx`):
+  `AuthProvider` + hook `useAuth()` con `isAuthenticated`, `usuario`,
+  `iniciarSesion()`, `registrarse()` y `cerrarSesion()`; la sesión
+  persiste en `localStorage` (`fhub:auth`) — solo el perfil, nunca
+  la contraseña
+- **Modal de Login/Registro** (`src/components/auth/AuthModal.tsx`):
+  campos Email y Contraseña (más Nombre en registro), validaciones
+  básicas (regex de email, contraseña mínima de 6 caracteres, nombre
+  de 2+ caracteres), errores por campo, estado de carga simulado
+  (~700 ms), toggle login ↔ registro, cierre con `Escape` o clic en
+  el backdrop, atributos `role="dialog"` y `aria-modal`
+- **Header** (`src/components/layout/Header.tsx`): reemplazados la
+  búsqueda y la campanita por el botón **Iniciar Sesión** + avatar
+  por defecto; al autenticarse muestra el **nombre del usuario** con
+  avatar de iniciales y la opción **Cerrar Sesión**
+- **App/Layout:** `AuthProvider` envuelve las rutas y el `Layout`
+  administra el estado del modal
+- **Documentación:** sección "🔐 Autenticación (simulada)" en este README
+- **Verificación:** `npm run build` ✅ (2228 módulos, sin warnings)
 
 ---
 
