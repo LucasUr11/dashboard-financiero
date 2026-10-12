@@ -127,7 +127,7 @@ export function TransaccionesPage() {
                     setPagina(1)
                   }}
                   className={cn(
-                    'rounded-md px-3 py-1.5 text-sm font-medium transition-colors',
+                    'cursor-pointer rounded-md px-3 py-1.5 text-sm font-medium transition-colors',
                     filtroTipo === opcion.valor
                       ? 'bg-indigo-600 text-white shadow-sm'
                       : 'text-slate-600 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800',
@@ -158,7 +158,7 @@ export function TransaccionesPage() {
             <button
               type="button"
               onClick={() => setModalAbierto(true)}
-              className="inline-flex items-center gap-2 rounded-lg bg-indigo-600 px-4 py-2 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-indigo-700"
+              className="inline-flex cursor-pointer items-center gap-2 rounded-lg bg-indigo-600 px-4 py-2 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-indigo-700"
             >
               <Plus className="h-4 w-4" />
               Nueva transacción
@@ -253,7 +253,7 @@ export function TransaccionesPage() {
               onClick={() => setPagina((p) => Math.max(1, p - 1))}
               disabled={paginaActual <= 1}
               aria-label="Página anterior"
-              className="rounded-lg p-2 text-slate-500 transition-colors hover:bg-slate-100 disabled:opacity-40 dark:text-slate-400 dark:hover:bg-slate-800"
+              className="cursor-pointer rounded-lg p-2 text-slate-500 transition-colors hover:bg-slate-100 disabled:opacity-40 dark:text-slate-400 dark:hover:bg-slate-800"
             >
               <ChevronLeft className="h-4 w-4" />
             </button>
@@ -265,7 +265,7 @@ export function TransaccionesPage() {
               onClick={() => setPagina((p) => Math.min(totalPaginas, p + 1))}
               disabled={paginaActual >= totalPaginas}
               aria-label="Página siguiente"
-              className="rounded-lg p-2 text-slate-500 transition-colors hover:bg-slate-100 disabled:opacity-40 dark:text-slate-400 dark:hover:bg-slate-800"
+              className="cursor-pointer rounded-lg p-2 text-slate-500 transition-colors hover:bg-slate-100 disabled:opacity-40 dark:text-slate-400 dark:hover:bg-slate-800"
             >
               <ChevronRight className="h-4 w-4" />
             </button>
@@ -294,7 +294,7 @@ export function TransaccionesPage() {
                 type="button"
                 onClick={() => setModalAbierto(false)}
                 aria-label="Cerrar"
-                className="rounded-lg p-1.5 text-slate-400 transition-colors hover:bg-slate-100 hover:text-slate-600 dark:hover:bg-slate-800"
+                className="cursor-pointer rounded-lg p-1.5 text-slate-400 transition-colors hover:bg-slate-100 hover:text-slate-600 dark:hover:bg-slate-800"
               >
                 <X className="h-5 w-5" />
               </button>
@@ -443,13 +443,13 @@ export function TransaccionesPage() {
                 <button
                   type="button"
                   onClick={() => setModalAbierto(false)}
-                  className="rounded-lg px-4 py-2 text-sm font-semibold text-slate-600 transition-colors hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800"
+                  className="cursor-pointer rounded-lg px-4 py-2 text-sm font-semibold text-slate-600 transition-colors hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800"
                 >
                   Cancelar
                 </button>
                 <button
                   type="submit"
-                  className="rounded-lg bg-indigo-600 px-4 py-2 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-indigo-700"
+                  className="cursor-pointer rounded-lg bg-indigo-600 px-4 py-2 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-indigo-700"
                 >
                   Guardar
                 </button>

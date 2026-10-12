@@ -78,7 +78,7 @@ export function Sidebar({ isOpen, onToggle }: SidebarProps) {
           title={isOpen ? 'Ocultar sidebar' : 'Mostrar sidebar'}
           aria-label={isOpen ? 'Ocultar sidebar' : 'Mostrar sidebar'}
           className={cn(
-            'ml-auto shrink-0 rounded-lg p-2 text-slate-400 transition-colors hover:bg-white/10 hover:text-white',
+            'ml-auto shrink-0 cursor-pointer rounded-lg p-2 text-slate-400 transition-colors hover:bg-white/10 hover:text-white',
             !isOpen && 'lg:ml-0',
           )}
         >
@@ -130,7 +130,7 @@ export function Sidebar({ isOpen, onToggle }: SidebarProps) {
           aria-label={isDark ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro'}
           aria-pressed={isDark}
           className={cn(
-            'flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-slate-400 transition-colors hover:bg-white/5 hover:text-white',
+            'flex w-full cursor-pointer items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-slate-400 transition-colors hover:bg-white/5 hover:text-white',
             !isOpen && 'justify-center lg:px-0',
           )}
         >

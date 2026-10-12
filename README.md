@@ -210,6 +210,7 @@ El sidebar se oculta/muestra con un botón (dentro del sidebar y en el header)
 - **Contenido principal:** `min-w-0 flex-1` + tablas con `overflow-x-auto` y
   cards con `min-w-0` → el layout nunca se rompe al animar.
 - **Persistencia:** el estado se guarda en `localStorage` (`fhub:sidebar`).
+- **Interacción:** todos los botones usan la clase Tailwind `cursor-pointer`.
 
 Secciones de la app: **Resumen** (`/`), **Dashboard General** (`/dashboard`),
 **Transacciones** (`/transacciones`), **Presupuestos** (`/presupuestos`).
